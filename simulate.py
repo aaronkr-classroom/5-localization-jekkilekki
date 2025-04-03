@@ -85,7 +85,7 @@ class Simulation(object):
 				self.X.append(x)
 				self.Y.append(self.height-y-1) # puts large y ABOVE small y
 				self.P.append(5000.0 * belief)
-		plt.figure()
+		plt.figure(figsize=(5,5))
 		if past_turn:
 			plt.scatter(X, Y, s=P, alpha=0.3,color="blue")
 			plt.scatter([self.prev_pose[1]], [self.height-self.true_pose[0]-1], color='red', marker="*", s=200, alpha=0.3)
