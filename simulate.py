@@ -19,7 +19,7 @@ class Simulation(object):
 		self.colors = self.get_colors()
 		self.num_colors = len(self.colors)
 		if not start_pos:
-			self.true_pose = (self.height/2, self.width/2)
+			self.true_pose = (self.height // 2, self.width // 2) # 수정: floor division
 		else:
 			self.true_pose = start_pos
 		self.prev_pose = self.true_pose
@@ -39,6 +39,9 @@ class Simulation(object):
 		return all_colors
 
 	def sense(self):
+		# print("type(beliefs):", type(self.beliefs)) # <list>
+		# print("type(beliefs[0]):", type(self.beliefs[0])) # <list>
+
 		color = self.get_observed_color()
 		beliefs = deepcopy(self.beliefs)
 		new_beliefs = localizer.sense(color, self.grid, beliefs, self.p_hit, self.p_miss)
